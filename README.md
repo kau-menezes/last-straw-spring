@@ -38,3 +38,4 @@
 ## OBS:
 
 1. Usa o find nos repositories com List mesmo, só verificar se tá vazia
+2. Se você não especificar o OrderBy, ele vai ordenar pela entidade mais antiga da tabela, a que foi atualizada por último
