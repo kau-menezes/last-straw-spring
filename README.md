@@ -31,10 +31,6 @@
 
 
 
-
-
-
-
 ## OBS:
 
 1. Usa o find nos repositories com List mesmo, só verificar se tá vazia
