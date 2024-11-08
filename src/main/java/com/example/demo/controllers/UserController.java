@@ -15,14 +15,14 @@ import com.example.demo.dto.users.UserUpdateDTO;
 import com.example.demo.interfaces.IUserService;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping
 public class UserController {
     
 
     @Autowired
     IUserService service;
 
-    @PostMapping
+    @PostMapping("/users")
     public ResponseEntity<UserResponseDTO> createUser(@RequestBody UserCreationDTO user) {
 
         var createdUser = service.createUser(user);
@@ -30,7 +30,7 @@ public class UserController {
         return new ResponseEntity<UserResponseDTO>(createdUser, HttpStatus.CREATED);
     }
 
-    @PatchMapping
+    @PatchMapping("/protected/users")
     public ResponseEntity<UserResponseDTO> updatePassword(@RequestBody UserUpdateDTO user) {
         var updated = service.changePassword(user);
 
