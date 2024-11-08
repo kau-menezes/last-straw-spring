@@ -2,7 +2,6 @@ package com.example.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.dto.users.UserCreationDTO;
 import com.example.demo.dto.users.UserResponseDTO;
 import com.example.demo.dto.users.UserUpdateDTO;
-import com.example.demo.services.UserService;
+import com.example.demo.interfaces.IUserService;
 
 @RestController
 @RequestMapping("/users")
@@ -21,7 +20,7 @@ public class UserController {
     
 
     @Autowired
-    UserService service;
+    IUserService service;
 
     @PostMapping
     public ResponseEntity<UserResponseDTO> createUser(@RequestBody UserCreationDTO user) {

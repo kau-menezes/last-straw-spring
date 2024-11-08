@@ -1,7 +1,6 @@
 package com.example.demo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.example.demo.dto.users.UserCreationDTO;
@@ -37,8 +36,9 @@ public class UserService implements IUserService {
         var query = repo.findOneByUsername(payload.username());
         if(query.isEmpty()) throw new ResponseException("User not found", 404);
 
-        query.get().setPassword(encoder.encode(payload.newPassword()));
-        var user = repo.save(query.get());
+        var user = query.get();
+        user.setPassword(encoder.encode(payload.newPassword()));
+        repo.save(user);
 
         return new UserResponseDTO(user.getId(), user.getUsername(), user.getEmail());
     }
