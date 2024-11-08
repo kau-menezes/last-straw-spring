@@ -16,7 +16,7 @@ import io.jsonwebtoken.security.Keys;
 
 public class JWTService implements IJWTService {
 
-    private String secretKey = "secret_keymuitolokarynfyjryujryujryj6u474y7tuj4tyj4j";
+    private String secretKey = "secretkeymuitolokarynfyjryujryujryj6u474y7tuj4tyj4j";
     private Long expirationTime = (long) (1000*60*60);
 
     private SecretKey getSignInKey() {

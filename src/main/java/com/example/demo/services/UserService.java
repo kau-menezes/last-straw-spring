@@ -33,10 +33,10 @@ public class UserService implements IUserService {
     
     @Override
     public UserResponseDTO changePassword(UserUpdateDTO payload) {
-        var query = repo.findOneByUsername(payload.username());
+        var query = repo.findByUsername(payload.username());
         if(query.isEmpty()) throw new ResponseException("User not found", 404);
 
-        var user = query.get();
+        var user = query.get(0);
         user.setPassword(encoder.encode(payload.newPassword()));
         repo.save(user);
 

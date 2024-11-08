@@ -27,10 +27,10 @@ public class LoginService implements ILoginService {
     @Override
     public LoginResponse login(LoginPayload payload) {
         
-        var query = repo.findOneByUsername(payload.username());
+        var query = repo.findByUsername(payload.username());
         if(query.isEmpty()) throw new ResponseException("User not found", 404);
 
-        var user = query.get();
+        var user = query.get(0);
 
         if(!encoder.matches(payload.password(), user.getPassword())) {
             throw new ResponseException("Incorrect credentials", 401);
