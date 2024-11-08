@@ -34,11 +34,14 @@ public class TokenFilter extends OncePerRequestFilter {
             var authentication = new UsernamePasswordAuthenticationToken(claims.get("username"), null, null);
             // com as informações, é iniciado um objeto de credenciais no request que é do spring
             SecurityContextHolder.getContext().setAuthentication(authentication);
+            
+            request.setAttribute("username", claims.get("username"));
+            request.setAttribute("email", claims.get("email"));
+            request.setAttribute("id", claims.get("id"));
         } catch (Exception e) {
             return;
         }
 
-        request.setAttribute("token", token);
         filterChain.doFilter(request, response);
     }
 }
